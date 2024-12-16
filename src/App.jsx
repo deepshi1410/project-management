@@ -7,6 +7,7 @@ function App() {
   const [projectsData, setProjectsData] = useState({
     projects: [],
     selectedProjectId: undefined,
+    tasks: [],
   })
 
   const selectedProject = projectsData.projects.find(project => project.id === projectsData.selectedProjectId)
@@ -62,7 +63,7 @@ function App() {
   }
 
   function handleAddTask(text) {
-    setProjectsState((prevState) => {
+    setProjectsData((prevState) => {
       const taskId = Math.random();
       const newTask = {
         text: text,
@@ -78,7 +79,7 @@ function App() {
   }
 
   function handleDeleteTask(id) {
-    setProjectsState((prevState) => {
+    setProjectsData((prevState) => {
       return {
         ...prevState,
         tasks: prevState.tasks.filter((task) => task.id !== id),
